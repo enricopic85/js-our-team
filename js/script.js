@@ -30,10 +30,35 @@ const team = [
       image: 'barbara-ramos-graphic-designer.jpg',
     },
   ];
+  let addCard=document.getElementById("addMemberButton");
+addCard.addEventListener('click',function(){
+      let newName=document.getElementById("name").value;
+      let newRole=document.getElementById("role").value;
+      let newImg=['new-team-member-02.jpg','new-team-member-01.jpg','new-team-member-03.jpg','new-team-member-04.jpg']
+      let newObject={
+        name: newName,
+        role: newRole,
+        image: newImg[0]
+      }
+      team.push(newObject);
+      container.innerHTML +=`<div class="team-card">
+      <div class="card-image">
+        <img
+          src="img/${newImg[0]}"
+          alt="${newName}"
+        />
+      </div>
+      <div class="card-text">
+        <h3>${newName}</h3>
+        <p>${newRole}</p>
+      </div>
+    </div>`
+})
 
 let container=document.querySelector(".team-container");
 for(let i=0;i<team.length;i++){
   let card=team[i];
+  console.log(card)
   container.innerHTML +=`<div class="team-card">
     <div class="card-image">
       <img
@@ -69,18 +94,18 @@ for(let i=0;i<team.length;i++){
 //   roleCard.innerText=card.role;
 //   cardText.append(roleCard);
 // }
-let addCard=document.getElementById("addMemberButton");
-addCard.addEventListener('click',function(){
-      let newName=document.getElementById("name").value;
-      let newRole=document.getElementById("role").value;
-      let newImg=document.getElementById("image").value;
-      let newObject={
-        name: newName,
-        role: newRole,
-        image: newImg
-      }
-      team.push(newObject);
-})
+// let addCard=document.getElementById("addMemberButton");
+// addCard.addEventListener('click',function(){
+//       let newName=document.getElementById("name").value;
+//       let newRole=document.getElementById("role").value;
+//       let newImg=['img/new-team-member-02.jpg']
+//       let newObject={
+//         name: newName,
+//         role: newRole,
+//         image: newImg
+//       }
+//       team.push(newObject);
+// })
 // program to append an object to an array
 
 // function insertObject(arr, obj) {
