@@ -30,22 +30,19 @@ const team = [
       image: 'barbara-ramos-graphic-designer.jpg',
     },
   ];
-  const createCard=(arr)=>{
-    for(let i=0;i<arr.length;i++){
-      let card=arr[i];
+  const createCard=(prop1,prop2,prop3)=>{
       container.innerHTML +=`<div class="team-card">
         <div class="card-image">
           <img
-            src="img/${card.image}"
-            alt="${card.name}"
+            src="img/${prop1}"
+            alt="${prop2}"
           />
         </div>
         <div class="card-text">
-          <h3>${card.name}</h3>
-          <p>${card.role}</p>
+          <h3>${prop2}</h3>
+          <p>${prop3}</p>
         </div>
       </div>`
-    }
   }
   let addCard=document.getElementById("addMemberButton");
   addCard.addEventListener('click',function(){
@@ -58,24 +55,15 @@ const team = [
         image: newImg
       }
       team.push(newObject);
-      container.innerHTML +=`<div class="team-card">
-      <div class="card-image">
-        <img
-          src="img/${newImg[document.getElementById("image").value]}"
-          alt="${newName}"
-        />
-      </div>
-      <div class="card-text">
-        <h3>${newName}</h3>
-        <p>${newRole}</p>
-      </div>
-    </div>`
+      createCard(newImg[document.getElementById("image").value],newName,newRole)
     
 })
 
 let container=document.querySelector(".team-container");
-createCard(team)
-
+for(i=0;i<team.length;i++){
+  let card=team[i];
+  createCard(card.image,card.name,card.role);
+}
 // for(i=0;i<team.length;i++){
 //   let card=team[i];
 //   let teamCard=document.createElement('div');
