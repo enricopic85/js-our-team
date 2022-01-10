@@ -30,22 +30,38 @@ const team = [
       image: 'barbara-ramos-graphic-designer.jpg',
     },
   ];
+  const createCard=(arr)=>{
+    for(let i=0;i<arr.length;i++){
+      let card=arr[i];
+      container.innerHTML +=`<div class="team-card">
+        <div class="card-image">
+          <img
+            src="img/${card.image}"
+            alt="${card.name}"
+          />
+        </div>
+        <div class="card-text">
+          <h3>${card.name}</h3>
+          <p>${card.role}</p>
+        </div>
+      </div>`
+    }
+  }
   let addCard=document.getElementById("addMemberButton");
-addCard.addEventListener('click',function(){
+  addCard.addEventListener('click',function(){
       let newName=document.getElementById("name").value;
       let newRole=document.getElementById("role").value;
       let newImg=['new-team-member-02.jpg','new-team-member-01.jpg','new-team-member-03.jpg','new-team-member-04.jpg']
       let newObject={
         name: newName,
         role: newRole,
-        image: newImg[document.getElementById("image").value]
+        image: newImg
       }
       team.push(newObject);
-      const random = Math.floor(Math.random() * newImg.length);
       container.innerHTML +=`<div class="team-card">
       <div class="card-image">
         <img
-          src="img/${newImg[random]}"
+          src="img/${newImg[document.getElementById("image").value]}"
           alt="${newName}"
         />
       </div>
@@ -58,22 +74,8 @@ addCard.addEventListener('click',function(){
 })
 
 let container=document.querySelector(".team-container");
-for(let i=0;i<team.length;i++){
-  let card=team[i];
-  console.log(card)
-  container.innerHTML +=`<div class="team-card">
-    <div class="card-image">
-      <img
-        src="img/${card.image}"
-        alt="${card.name}"
-      />
-    </div>
-    <div class="card-text">
-      <h3>${card.name}</h3>
-      <p>${card.role}</p>
-    </div>
-  </div>`
-}
+createCard(team)
+
 // for(i=0;i<team.length;i++){
 //   let card=team[i];
 //   let teamCard=document.createElement('div');
@@ -96,33 +98,3 @@ for(let i=0;i<team.length;i++){
 //   roleCard.innerText=card.role;
 //   cardText.append(roleCard);
 // }
-// let addCard=document.getElementById("addMemberButton");
-// addCard.addEventListener('click',function(){
-//       let newName=document.getElementById("name").value;
-//       let newRole=document.getElementById("role").value;
-//       let newImg=['img/new-team-member-02.jpg']
-//       let newObject={
-//         name: newName,
-//         role: newRole,
-//         image: newImg
-//       }
-//       team.push(newObject);
-// })
-// program to append an object to an array
-
-// function insertObject(arr, obj) {
-
-//   // append object
-//   arr.push(obj);
-  
-//   console.log(arr);
-// }
-
-// // original array
-// let array = [1, 2, 3];
-
-// // object to add
-// let object = {x: 12, y: 8};
-
-// // call the function
-// console.log(insertObject(array, object));
