@@ -38,9 +38,10 @@ addCard.addEventListener('click',function(){
       let newObject={
         name: newName,
         role: newRole,
-        image: newImg[0]
+        image: newImg
       }
       team.push(newObject);
+      let counter=1;
       container.innerHTML +=`<div class="team-card">
       <div class="card-image">
         <img
@@ -53,6 +54,7 @@ addCard.addEventListener('click',function(){
         <p>${newRole}</p>
       </div>
     </div>`
+    
 })
 
 let container=document.querySelector(".team-container");
