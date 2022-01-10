@@ -32,18 +32,40 @@ const team = [
   ];
 
 let container=document.querySelector(".team-container");
-for(let i=0;i<team.length;i++){
+// for(let i=0;i<team.length;i++){
+//   let card=team[i];
+//   container.innerHTML +=`<div class="team-card">
+//     <div class="card-image">
+//       <img
+//         src="img/${card.image}"
+//         alt="${card.name}"
+//       />
+//     </div>
+//     <div class="card-text">
+//       <h3>${card.name}</h3>
+//       <p>${card.role}</p>
+//     </div>
+//   </div>`
+// }
+for(i=0;i<team.length;i++){
   let card=team[i];
-  container.innerHTML +=`<div class="team-card">
-    <div class="card-image">
-      <img
-        src="img/${card.image}"
-        alt="${card.name}"
-      />
-    </div>
-    <div class="card-text">
-      <h3>${card.name}</h3>
-      <p>${card.role}</p>
-    </div>
-  </div>`
+  let teamCard=document.createElement('div');
+  teamCard.classList.add("team-card");
+  container.append(teamCard);
+  let cardImage=document.createElement('div');
+  cardImage.classList.add("card-image");
+  teamCard.append(cardImage);
+  let img=document.createElement("img");
+  img.src=`img/${card.image}`;
+  img.alt=card.name;
+  cardImage.append(img);
+  let cardText=document.createElement("div");
+  cardText.classList.add("card-text");
+  teamCard.append(cardText);
+  let nameCard=document.createElement("h3");
+  nameCard.innerText=card.name;
+  cardText.append(nameCard);
+  let roleCard=document.createElement("p");
+  roleCard.innerText=card.role;
+  cardText.append(roleCard);
 }
