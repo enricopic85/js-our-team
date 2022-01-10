@@ -38,14 +38,14 @@ addCard.addEventListener('click',function(){
       let newObject={
         name: newName,
         role: newRole,
-        image: newImg
+        image: newImg[document.getElementById("image").value]
       }
       team.push(newObject);
-      let counter=1;
+      const random = Math.floor(Math.random() * newImg.length);
       container.innerHTML +=`<div class="team-card">
       <div class="card-image">
         <img
-          src="img/${newImg[0]}"
+          src="img/${newImg[random]}"
           alt="${newName}"
         />
       </div>
